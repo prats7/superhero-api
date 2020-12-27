@@ -68,6 +68,7 @@ const SuperHero = (function () {
         );
     }
 
+    
 
     /* Fetch data of a superhero with character id as 'id' */
     async function fetchSuperHeroData(id) {
