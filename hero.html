@@ -3,32 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-      rel="stylesheet"
-    />
-    <title>Superhero</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Hero details</title>
   </head>
   <body>
-    <nav>
-      <div class="left">
-        <a href="/">SuperheroJS</a>
-      </div>
-      <div class="right">
-        <a href="/favorites.html" class="link">Favourites</a>
-      </div>
-    </nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="/index.html">Superhero Hunter</a>
 
-    <div class="loader"></div>
-
-    <div class="super-hero-detail"></div>
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                  <li class="nav-item active">
+                      <a class="nav-link" aria-current="page" href="/index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/favorites.html">Favorites</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+    <div id="container">
+      <div class="hero-card"></div>
+      <button type="button" class="btn btn-danger">Favorite</button>
+    </div>
+    
 
     <div id="toast"></div>
 
     <script src="index.js"></script>
-    <script src=""></script>
-    <script>
-      SuperHero.init();
-    </script>
+    <script src="hero.js"></script>
   </body>
 </html>

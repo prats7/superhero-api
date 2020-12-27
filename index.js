@@ -4,7 +4,7 @@ const searchList = document.getElementById('search-result');
 let searchResults = [];
 const SEARCH_TEXT_LIMIT = 2;
 const loader = document.getElementById('loader');
-
+const FAVORITES = 'favorites.js';
 
 function initializeSuperHeroApp() {
 
@@ -96,26 +96,9 @@ function renderSearchResults() {
         );
         li.classList.add('search-result');
         li.innerHTML = `
-                      <div class="search-left">
-                        <img src=${element.image.url} alt="" />
-                      </div>
-                      <div class="search-right">
                         <a href="superhero.html?id=${element.id}">
                           <div class="name">${element.name}</div>
-                        </a>
-                        <div class="full-name">${element.biography['full-name']
-            }</div>
-  
-                        <div class="address">${element.biography['place-of-birth']
-            }</div>
-                        <button class="btn add-to-fav" data-id=${element.id
-            } style="display: ${indexOfSuperHeroInFavourites === -1 ? 'block' : 'none'
-            }">Add to favourites</button>
-                        <button class="btn remove-from-fav" data-id=${element.id
-            }  style="display: ${indexOfSuperHeroInFavourites === -1 ? 'none' : 'block'
-            }">Remove from favourites</button>
-                      </div>
-                    `;
+                        </a>`;
         searchList.appendChild(li);
     });
 }
@@ -139,44 +122,11 @@ async function apiRequest(url) {
     }
 }
 
-// function removeHeroFromFavourites(heroId) {
-//     if (!heroId) return;
-
-//     let favouritesFromLocalStorage = getFavouriteSuperheroes();
-
-//     // Remove hero from localstorage
-//     favouritesFromLocalStorage = favouritesFromLocalStorage.filter(
-//       (item) => item.id !== heroId
-//     );
-
-//     // Save in localstorage
-//     localStorage.setItem(
-//       FAVOURITES,
-//       JSON.stringify(favouritesFromLocalStorage)
-//     );
-
-//   }
-
-  // function addHeroToFavourites(hero) {
-  //   if (!hero) return;
-
-  //   const favouritesFromLocalStorage = getFavouriteSuperheroes();
-  //   favouritesFromLocalStorage.push(hero);
-
-  //   // Save in localstorage
-  //   localStorage.setItem(
-  //     FAVOURITES,
-  //     JSON.stringify(favouritesFromLocalStorage)
-  //   );
-
-  // }
-
-
-  // function getFavouriteSuperheroes() {
-  //   return localStorage.getItem(FAVOURITES)
-  //     ? JSON.parse(localStorage.getItem(FAVOURITES))
-  //     : [];
-  // }
+  function getFavouriteSuperheroes() {
+    return localStorage.getItem(FAVORITES)
+      ? JSON.parse(localStorage.getItem(FAVORITES))
+      : [];
+  }
 
 initializeSuperHeroApp();
 
