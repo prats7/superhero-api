@@ -69,10 +69,6 @@ function initializeSuperHeroApp() {
         }
     });
 
-    return{
-        initializeSuperHeroApp
-    };
-
 }
 
 
@@ -96,9 +92,20 @@ function renderSearchResults() {
         );
         li.classList.add('search-result');
         li.innerHTML = `
-                        <a href="superhero.html?id=${element.id}">
+                        <a href="hero.html?id=${element.id}">
                           <div class="name">${element.name}</div>
-                        </a>`;
+                        </a>
+                        <button class="btn add-to-fav" data-id=${
+                          element.id
+                        } style="display: ${
+          indexOfSuperHeroInFavourites === -1 ? 'block' : 'none'
+        }">Add to favourites</button>
+                        <button class="btn remove-from-fav" data-id=${
+                          element.id
+                        }  style="display: ${
+          indexOfSuperHeroInFavourites === -1 ? 'none' : 'block'
+        }">Remove from favourites</button>
+                        `;
         searchList.appendChild(li);
     });
 }
@@ -128,5 +135,48 @@ async function apiRequest(url) {
       : [];
   }
 
+
+
+     /* Add hero to localstorage */
+     function addHeroToFavourites(hero) {
+      if (!hero) return;
+  
+      const favouritesFromLocalStorage = getFavouriteSuperheroes();
+      favouritesFromLocalStorage.push(hero);
+  
+      // Save in localstorage
+      localStorage.setItem(
+        FAVORITES,
+        JSON.stringify(favouritesFromLocalStorage)
+      );
+  
+    }
+  
+    /* Remove hero from localstorage */
+    function removeHeroFromFavourites(heroId) {
+      if (!heroId) return;
+  
+      let favouritesFromLocalStorage = getFavouriteSuperheroes();
+  
+      // Remove hero from localstorage
+      favouritesFromLocalStorage = favouritesFromLocalStorage.filter(
+        (item) => item.id !== heroId
+      );
+  
+      // Save in localstorage
+      localStorage.setItem(
+        FAVORITES,
+        JSON.stringify(favouritesFromLocalStorage)
+      );
+    }
+  
+    /* Get fav superheroes from the local storage */
+    function getFavouriteSuperheroes() {
+      return localStorage.getItem(FAVORITES)
+        ? JSON.parse(localStorage.getItem(FAVORITES))
+        : [];
+    }
+  
+  
 initializeSuperHeroApp();
 
