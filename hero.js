@@ -3,7 +3,7 @@ const SuperHero = (function () {
 
     const FAVORITES = "favorites.js"
 
-//query params
+    //query params
     function getQueryParameter(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
@@ -35,10 +35,7 @@ const SuperHero = (function () {
             }">Add to favourites</button>
                                               <button class="btn remove-from-fav" data-id=${element.id
             }  style="display: ${indexOfSuperHeroInFavourites === -1 ? 'none' : 'block'
-            }">Remove from favourites</button>
-                                      
-                              
-                                          `;
+            }">Remove from favourites</button>`;
     }
 
     function getFavouriteSuperheroes() {
@@ -51,24 +48,9 @@ const SuperHero = (function () {
 
 
 
-    function removeHeroFromFavourites(heroId) {
-        if (!heroId) return;
 
-        let favouritesFromLocalStorage = getFavouriteSuperheroes();
 
-        // Remove hero from localstorage
-        favouritesFromLocalStorage = favouritesFromLocalStorage.filter(
-            (item) => item.id !== heroId
-        );
 
-        // Save in localstorage
-        localStorage.setItem(
-            FAVORITES,
-            JSON.stringify(favouritesFromLocalStorage)
-        );
-    }
-
-    
 
     /* Fetch data of a superhero with character id as 'id' */
     async function fetchSuperHeroData(id) {
