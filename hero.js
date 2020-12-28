@@ -39,6 +39,15 @@ const SuperHero = (function () {
     }
 
 
+
+
+
+
+
+
+
+
+
     /* Fetch data of a superhero with character id as 'id' */
     async function fetchSuperHeroData(id) {
         const url = `https://www.superheroapi.com/api.php/10219177700206566/`;

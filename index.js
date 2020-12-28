@@ -70,6 +70,13 @@ function renderSearchResults() {
     });
 }
 
+function getFavouriteSuperheroes() {
+    return localStorage.getItem(FAVORITES)
+        ? JSON.parse(localStorage.getItem(FAVORITES))
+        : [];
+}
+
+
 /* Send api requests */
 async function apiRequest(url) {
     try {
