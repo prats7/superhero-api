@@ -38,19 +38,6 @@ const SuperHero = (function () {
             }">Remove from favourites</button>`;
     }
 
-    function getFavouriteSuperheroes() {
-        return localStorage.getItem(FAVORITES)
-            ? JSON.parse(localStorage.getItem(FAVORITES))
-            : [];
-    }
-
-
-
-
-
-
-
-
 
     /* Fetch data of a superhero with character id as 'id' */
     async function fetchSuperHeroData(id) {
